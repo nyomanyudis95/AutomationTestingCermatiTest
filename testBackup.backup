@@ -1,0 +1,74 @@
+const {By, Builder, Browser, WebDriver} = require('selenium-webdriver');
+const {suite} = require('selenium-webdriver/testing');
+const assert = require("assert");
+
+
+suite(function (env) {
+  describe('First script', function () {
+    let driver;
+
+    before(async  () => {
+      driver = await new Builder().forBrowser('chrome').build();
+    });
+
+    after(async () => await driver.quit());
+
+    // it('First Selenium script', async function () {
+    //   // await driver.get('https://www.selenium.dev/selenium/web/web-form.html');
+    //   await driver.get('https://stackoverflow.com/questions/44149096/for-async-tests-and-hooks-ensure-done-is-called-if-returning-a-promise-en');
+
+    //   let title = await driver.getTitle();
+    //   console.log('title = ',title);
+    //   let questionText = await driver.findElement(By.className('question-hyperlink'));
+    //   const valueQUestion = await questionText.getText();
+    //   console.log('questionText = ',valueQUestion);
+    //   // assert.equal("Web form", title);
+
+    //   // await driver.manage().setTimeouts({implicit: 500});
+
+    //   // let textBox = await driver.findElement(By.name('my-text'));
+    //   // let submitButton = await driver.findElement(By.css('button'));
+
+    //   // await textBox.sendKeys('Selenium');
+    //   // await submitButton.click();
+
+    //   // let message = await driver.findElement(By.id('message'));
+    //   // let value = await message.getText();
+    //   // assert.equal("Received!", value);
+    // });
+
+    it('Submit empty', async () => {
+
+      await driver.get("https://www.cermati.com/app/gabung");
+      await setTimeout(async () => {
+        let title = await driver.getTitle();
+        console.log('title 2 = ',title);
+      },5000)
+      // const asd =  await driver.navigate().to('https://www.cermati.com/app/gabung'); 
+      // setTimeout(async () => {
+      //   let title = await driver.getTitle();
+      //   console.log('title 2 = ',title);
+      // },3000)
+      // console.log('asd = ',asd);
+
+      // await driver.get('https://www.cermati.com/app/gabung');
+      // let html_content = await  driver.execute_script("return document.documentElement.outerHTML;")
+      // console.log('html_content = ',html_content);
+      // await driver.get('https://www.selenium.dev/selenium/web/web-form.html');
+
+      // let title = await driver.getTitle();
+      // console.log('title = ',title);
+
+      // let textBox = await driver.findElement(By.name('email'));
+      // await textBox.sendKeys('Selenium');
+      // let submitButton = await driver.findElement(By.id('email'));
+      // console.log('submitButtoin = ',submitButton);
+      // await submitButton.click();
+      // let textError = await driver.findElement(By.className('error_rz3sn'));
+      // let valueError = await textError.getText();
+      // console.log('valueError = ',valueError);
+      // assert.equal("Input wajib diisi",valueError);
+      // assert.equal("Cermati Masuk",title)
+    });
+  });
+}, { browsers: [Browser.CHROME]});
